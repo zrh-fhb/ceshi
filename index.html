@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>天天开红包</title>
+  <style>
+    body { background: #fffaf3; margin: 0; padding: 0; }
+    .container { position: relative; max-width: 600px; margin: 0 auto; }
+    .bg-img { width: 100%; display: block; }
+    .copy-btn {
+      position: absolute; width: 60%;
+      left: 50%; transform: translateX(-50%);
+      top: 70%;
+    }
+    .mark-img {
+      position: absolute; width: 15%;
+      top: 75%; left: 80%;
+      transform: translateX(-50%);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img class="bg-img" src="https://cdn2.6-y.cn/cps/tbsg1.png" alt="红包背景" />
+    <img id="copyBtn" class="copy-btn" src="https://crm.shenquanwaimai.com/resource/image/crmapi/shangou2.png" alt="复制口令" />
+    <img class="mark-img" src="https://img.dac6.cn/users/0/0/3d566cda202c38df2306d3c84aea1ded.png" />
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+  <script>
+    const ios = /iphone|ipad|mac/i.test(navigator.userAgent.toLowerCase());
+    const taokey = "￥WLwp4cvR0Z2￥/ HU7405";
+    const btn = document.getElementById("copyBtn");
+    btn.setAttribute("data-clipboard-text", taokey);
+
+    new ClipboardJS("#copyBtn").on("success", () => {
+      alert("口令复制成功！请打开淘宝 App 查看");
+      if (ios) {
+        setTimeout(() => {
+          location.href = "taobao://";
+        }, 300);
+      }
+    });
+function open_tips(){
+		if(flag){
+			layer.open({
+				type:2,
+				content: '口令获取中...',
+				time: 0.5,
+				end:function(){
+				    // if(!ios){
+    					layer.open({
+    						content: '口令复制成功!<br>请打开 手机 [ 淘宝app ] 查看',
+    						style: 'background-color:rgba(0,0,0,.7);color:#fff;border:none;width:auto;',
+    						shade:false,
+    						time: 3,
+    					})
+				    // }
+				}
+			})
+		} else {
+		    if(!ios){
+    			layer.open({
+    				content: '已经成功复制口令,请打开手机 [ 淘宝app ] 查看',
+    				style: 'background-color:rgba(0,0,0,.7);color:#fff;border:none;width:auto;',
+    				shade:false,
+    				time: 3,
+    			})
+		    } else {
+		        layer.open({
+    				type:2,
+    				content: '口令获取中...',
+    				time: 0.5,
+    				end:function(){
+    				    if(!ios){
+        					layer.open({
+        						content: '口令复制成功!<br>请打开 手机 [ 淘宝app ] 查看',
+        						style: 'background-color:rgba(0,0,0,.7);color:#fff;border:none;width:auto;',
+        						shade:false,
+        						time: 3,
+        					})
+    				    }
+    				}
+    			})
+		    }
+		}
+	}
+  </script>
+</body>
+</html>
